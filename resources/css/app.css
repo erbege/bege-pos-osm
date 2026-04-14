@@ -1,0 +1,472 @@
+@import "tailwindcss";
+
+/*
+ * Garasi 66 — Theme System
+ * Uses CSS custom properties switched by .dark / .light class on <html>
+ * The theme toggle in AdminLayout controls this via JS + localStorage
+ */
+
+/* ─── Dark Theme (default) ─── */
+.dark,
+:root {
+    --g-bg-primary: #0A0A0A;
+    --g-bg-secondary: #141414;
+    --g-bg-tertiary: #1F1F1F;
+    --g-bg-hover: rgba(255, 255, 255, 0.05);
+    --g-bg-active: rgba(255, 255, 255, 0.08);
+
+    --g-border: rgba(255, 255, 255, 0.08);
+    --g-border-strong: rgba(255, 255, 255, 0.15);
+
+    --g-text-primary: #FFFFFF;
+    --g-text-secondary: #BFBCBC;
+    --g-text-tertiary: #8E8E8E;
+    --g-text-muted: #5A5A5A;
+    --g-text-placeholder: #444444;
+
+    --g-accent: #E84C30;
+    --g-accent-hover: #F05A3D;
+    --g-accent-soft: rgba(232, 76, 48, 0.15);
+    --g-accent-text: #FF6B4A;
+
+    --g-success: #10B981;
+    --g-success-soft: rgba(16, 185, 129, 0.12);
+    --g-success-border: rgba(16, 185, 129, 0.25);
+
+    --g-warning: #F59E0B;
+    --g-warning-soft: rgba(245, 158, 11, 0.12);
+    --g-warning-border: rgba(245, 158, 11, 0.25);
+
+    --g-danger: #EF4444;
+    --g-danger-soft: rgba(239, 68, 68, 0.12);
+    --g-danger-border: rgba(239, 68, 68, 0.25);
+
+    --g-input-bg: rgba(255, 255, 255, 0.02);
+    --g-input-border: rgba(255, 255, 255, 0.1);
+
+    --g-shadow: rgba(0, 0, 0, 0.8);
+    --g-backdrop: rgba(0, 0, 0, 0.75);
+
+    color-scheme: dark;
+}
+
+/* ─── Light Theme ─── */
+.light {
+    --g-bg-primary: #F1F5F9;
+    --g-bg-secondary: #FFFFFF;
+    --g-bg-tertiary: #E2E8F0;
+    --g-bg-hover: rgba(15, 23, 42, 0.04);
+    --g-bg-active: rgba(15, 23, 42, 0.07);
+
+    --g-border: #CBD5E1;
+    --g-border-strong: #94A3B8;
+
+    --g-text-primary: #0F172A;
+    --g-text-secondary: #334155;
+    --g-text-tertiary: #475569;
+    --g-text-muted: #64748B;
+    --g-text-placeholder: #94A3B8;
+
+    --g-accent: #E84C30;
+    --g-accent-hover: #D4432A;
+    --g-accent-soft: rgba(232, 76, 48, 0.1);
+    --g-accent-text: #C23924;
+
+    --g-success: #065F46;
+    --g-success-soft: rgba(6, 95, 70, 0.08);
+    --g-success-border: rgba(6, 95, 70, 0.20);
+
+    --g-warning: #92400E;
+    --g-warning-soft: rgba(146, 64, 14, 0.08);
+    --g-warning-border: rgba(146, 64, 14, 0.20);
+
+    --g-danger: #991B1B;
+    --g-danger-soft: rgba(153, 27, 27, 0.08);
+    --g-danger-border: rgba(153, 27, 27, 0.20);
+
+    --g-input-bg: #FFFFFF;
+    --g-input-border: #CBD5E1;
+
+    --g-shadow: rgba(15, 23, 42, 0.08);
+    --g-backdrop: rgba(15, 23, 42, 0.4);
+
+    color-scheme: light;
+}
+
+/* ─── Tailwind v4 Theme Variables ─── */
+@theme {
+    --color-primary: var(--g-bg-primary);
+    --color-secondary: var(--g-bg-secondary);
+    --color-tertiary: var(--g-bg-tertiary);
+    
+    --color-text-main: var(--g-text-primary);
+    --color-text-dim: var(--g-text-secondary);
+    --color-text-sub: var(--g-text-tertiary);
+    
+    --color-accent: var(--g-accent);
+}
+
+/* ─── Utility Classes ─── */
+.theme-bg { background-color: var(--g-bg-primary); }
+.theme-bg-card { background-color: var(--g-bg-secondary); }
+.theme-bg-elevated { background-color: var(--g-bg-tertiary); }
+.theme-border { border-color: var(--g-border); }
+.theme-text { color: var(--g-text-primary); }
+.theme-text-2 { color: var(--g-text-secondary); }
+.theme-text-3 { color: var(--g-text-tertiary); }
+
+/* ─── Global overrides for themed pages ─── */
+.light select option { background-color: #FFFFFF; color: #0F172A; }
+.dark select option { background-color: #1F1F1F; color: #FFFFFF; }
+
+/* ─── Smooth theme transition ─── */
+html { transition: background-color 0.2s ease, color 0.2s ease; }
+html body { font-family: 'Inter', sans-serif; background-color: var(--g-bg-primary); color: var(--g-text-primary); }
+
+/*
+ * ═══════════════════════════════════════════════════════════
+ * LIGHT MODE — Automatic Tailwind Utility Overrides
+ * Optimized for readability and higher contrast
+ * ═══════════════════════════════════════════════════════════
+ */
+
+/* ── Background Colors ── */
+.light .bg-\[\#1A1A1A\] { background-color: #F8FAFC !important; }
+.light .bg-\[\#2D2D2D\] { background-color: #FFFFFF !important; }
+.light .bg-\[\#383838\] { background-color: #F1F5F9 !important; }
+.light .bg-\[\#141414\] { background-color: #FFFFFF !important; }
+.light .bg-\[\#1F1F1F\] { background-color: #E2E8F0 !important; }
+
+.light .bg-white\/3, .light .bg-white\/\[0\.03\] { background-color: rgba(15, 23, 42, 0.03) !important; }
+.light .bg-white\/5 { background-color: rgba(15, 23, 42, 0.05) !important; }
+.light .bg-white\/8 { background-color: rgba(15, 23, 42, 0.08) !important; }
+.light .bg-white\/10 { background-color: rgba(15, 23, 42, 0.10) !important; }
+.light .bg-white\/\[0\.02\] { background-color: rgba(15, 23, 42, 0.02) !important; }
+
+.light .bg-black\/20 { background-color: rgba(15, 23, 42, 0.08) !important; }
+.light .bg-black\/40 { background-color: rgba(15, 23, 42, 0.15) !important; }
+.light .bg-black\/60 { background-color: rgba(15, 23, 42, 0.25) !important; }
+.light .bg-black\/80 { background-color: rgba(15, 23, 42, 0.45) !important; }
+
+/* ── Text Colors ── */
+.light .text-white { color: #0F172A !important; }
+.light .text-white\/90 { color: #1E293B !important; }
+.light .text-white\/80 { color: #334155 !important; }
+.light .text-white\/70 { color: #475569 !important; }
+.light .text-white\/60 { color: #5A6A85 !important; }
+.light .text-white\/50 { color: #64748B !important; }
+.light .text-white\/40 { color: #7A8AA0 !important; }
+.light .text-white\/30 { color: #8E9DB0 !important; }
+.light .text-white\/25 { color: #9AAABF !important; }
+.light .text-white\/20 { color: #ACB9CD !important; }
+.light .text-white\/15 { color: #BDC7D8 !important; }
+.light .text-white\/10 { color: #CDD5E2 !important; }
+
+/* ── Border Colors ── */
+.light .border-white\/5 { border-color: rgba(15, 23, 42, 0.08) !important; }
+.light .border-white\/10 { border-color: rgba(15, 23, 42, 0.12) !important; }
+.light .border-white\/20 { border-color: rgba(15, 23, 42, 0.18) !important; }
+.light .divide-white\/5>*+* { border-color: rgba(15, 23, 42, 0.08) !important; }
+
+/* ── Status colors (Darker for Light Background) ── */
+.light .text-emerald-400 { color: #065F46 !important; }
+.light .text-amber-400 { color: #92400E !important; }
+.light .text-red-400 { color: #991B1B !important; }
+.light .text-blue-400 { color: #1E40AF !important; }
+.light .text-purple-400 { color: #5B21B6 !important; }
+
+.light .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.12) !important; }
+.light .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.12) !important; }
+.light .bg-red-500\/10 { background-color: rgba(220, 38, 38, 0.12) !important; }
+.light .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.12) !important; }
+
+/* ── Hover States ── */
+.light .hover\:bg-white\/5:hover { background-color: rgba(15, 23, 42, 0.08) !important; }
+.light .hover\:bg-white\/10:hover { background-color: rgba(15, 23, 42, 0.12) !important; }
+.light .hover\:text-white:hover { color: #0F172A !important; }
+
+/* ── Form Inputs ── */
+.light input, .light textarea, .light select { color: #0F172A; background-color: #FFFFFF; }
+.light input::placeholder { color: #94A3B8; }
+
+/* ── Scrollbar ── */
+.light ::-webkit-scrollbar-track { background: #F1F5F9; }
+.light ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 8px; }
+.light ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+/* ── Card shadows in light mode ── */
+.light .rounded-lg {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Animate pulse text should also adapt ── */
+.light .animate-pulse {
+    color: inherit;
+}
+
+/*
+ * ═══════════════════════════════════════════════════════════
+ * Additional Overrides — POS, Kitchen, Customer, Auth pages
+ * ═══════════════════════════════════════════════════════════
+ */
+
+/* ── Extra hex backgrounds ── */
+.light .bg-\[\#222\] {
+    background-color: #F9F9F9 !important;
+}
+
+.light .bg-\[\#222222\] {
+    background-color: #F9F9F9 !important;
+}
+
+.light .bg-\[\#333\] {
+    background-color: #F0F0F0 !important;
+}
+
+.light .bg-\[\#252525\] {
+    background-color: #F7F7F7 !important;
+}
+
+/* ── Extra text opacity levels ── */
+.light .text-white\/90 {
+    color: #222222 !important;
+}
+
+.light .text-white\/15 {
+    color: #CCCCCC !important;
+}
+
+.light .text-white\/10 {
+    color: #DDDDDD !important;
+}
+
+/* ── Extra bg opacity levels ── */
+.light .bg-white\/15 {
+    background-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+.light .bg-white\/20 {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.light .bg-white\/\[0\.02\] {
+    background-color: rgba(0, 0, 0, 0.015) !important;
+}
+
+/* ── Extra bg-black shades ── */
+.light .bg-black\/20 {
+    background-color: rgba(0, 0, 0, 0.10) !important;
+}
+
+.light .bg-black\/30 {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+.light .bg-black\/50 {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.light .bg-black\/80 {
+    background-color: rgba(0, 0, 0, 0.40) !important;
+}
+
+/* ── Extra placeholder colors ── */
+.light .placeholder-white\/15::placeholder {
+    color: #CCCCCC !important;
+}
+
+.light .placeholder-white\/25::placeholder {
+    color: #AAAAAA !important;
+}
+
+/* ── Extra hover states ── */
+.light .hover\:bg-white\/20:hover {
+    background-color: rgba(0, 0, 0, 0.10) !important;
+}
+
+.light .hover\:text-white\/70:hover {
+    color: #4A4A4A !important;
+}
+
+.light .hover\:bg-red-500\/20:hover {
+    background-color: rgba(220, 38, 38, 0.12) !important;
+}
+
+.light .hover\:bg-red-500\/30:hover {
+    background-color: rgba(220, 38, 38, 0.15) !important;
+}
+
+/* ── Disabled states ── */
+.light .disabled\:bg-white\/5:disabled {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.light .disabled\:text-white\/20:disabled {
+    color: #BBBBBB !important;
+}
+
+/* ── Border with hex colors ── */
+.light .border-\[\#E84C30\]\/20 {
+    border-color: rgba(232, 76, 48, 0.20) !important;
+}
+
+.light .border-\[\#E84C30\]\/40 {
+    border-color: rgba(232, 76, 48, 0.30) !important;
+}
+
+.light .hover\:border-\[\#E84C30\]\/20:hover {
+    border-color: rgba(232, 76, 48, 0.25) !important;
+}
+
+.light .hover\:border-\[\#E84C30\]\/40:hover {
+    border-color: rgba(232, 76, 48, 0.35) !important;
+}
+
+/* ── Accent bg with hex notation ── */
+.light .bg-\[\#E84C30\]\/5 {
+    background-color: rgba(232, 76, 48, 0.05) !important;
+}
+
+.light .border-\[\#E84C30\]\/20 {
+    border-color: rgba(232, 76, 48, 0.15) !important;
+}
+
+/* ── Shadow colors in light mode ── */
+.light .shadow-\[\#E84C30\]\/5 {
+    --tw-shadow-color: rgba(232, 76, 48, 0.04) !important;
+}
+
+.light .shadow-\[\#E84C30\]\/20 {
+    --tw-shadow-color: rgba(232, 76, 48, 0.10) !important;
+}
+
+.light .shadow-\[\#E84C30\]\/25 {
+    --tw-shadow-color: rgba(232, 76, 48, 0.12) !important;
+}
+
+.light .shadow-\[\#E84C30\]\/40 {
+    --tw-shadow-color: rgba(232, 76, 48, 0.18) !important;
+}
+
+.light .hover\:shadow-\[\#E84C30\]\/40:hover {
+    --tw-shadow-color: rgba(232, 76, 48, 0.18) !important;
+}
+
+/* ── KDS / Kitchen specific ── */
+.light .text-\[\#E84C30\]\/30 {
+    color: rgba(232, 76, 48, 0.40) !important;
+}
+
+/* ── Auth pages ── */
+.light .bg-gray-100 {
+    background-color: #F3F4F6 !important;
+}
+
+/* ── Additional status colors for light mode ── */
+.light .text-emerald-400\/40 {
+    color: rgba(5, 150, 105, 0.50) !important;
+}
+
+.light .text-emerald-400\/70 {
+    color: rgba(5, 150, 105, 0.80) !important;
+}
+
+.light .text-red-400\/60 {
+    color: rgba(220, 38, 38, 0.70) !important;
+}
+
+.light .text-red-400\/70 {
+    color: rgba(220, 38, 38, 0.80) !important;
+}
+
+.light .text-amber-400\/70 {
+    color: rgba(217, 119, 6, 0.80) !important;
+}
+
+/* ── Focus ring via inline ── */
+.light .focus\:ring-2:focus {
+    --tw-ring-color: rgba(232, 76, 48, 0.20);
+}
+
+.light .focus\:ring-1:focus {
+    --tw-ring-color: rgba(232, 76, 48, 0.15);
+}
+
+/* ── Misc border states ── */
+.light .border-t-2 {
+    border-top-width: 2px;
+}
+
+.light .hover\:border-emerald-500\/20:hover {
+    border-color: rgba(5, 150, 105, 0.25) !important;
+}
+
+.light .hover\:border-amber-500\/20:hover {
+    border-color: rgba(217, 119, 6, 0.25) !important;
+}
+
+/* ── Custom Scrollbar Utility ── */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Utility: No Scrollbar ── */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ── Animations ── */
+@keyframes bounce-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-bounce-in {
+    animation: bounce-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.3s ease-out forwards;
+}

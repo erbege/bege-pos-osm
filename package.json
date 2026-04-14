@@ -1,0 +1,38 @@
+{
+  "$schema": "https://www.schemastore.org/package.json",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "reverb": "php artisan reverb:start"
+  },
+  "devDependencies": {
+    "@headlessui/react": "^2.0.0",
+    "@inertiajs/inertia": "^0.11.1",
+    "@inertiajs/inertia-react": "^0.8.1",
+    "@inertiajs/react": "^2.3.17",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/react": "~19.2.10",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.12",
+    "axios": "^1.11.0",
+    "concurrently": "^9.0.1",
+    "laravel-echo": "^2.3.0",
+    "laravel-vite-plugin": "^2.0.0",
+    "postcss": "^8.4.31",
+    "pusher-js": "^8.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.2.1",
+    "typescript": "~5.9.2",
+    "vite": "^7.0.7"
+  },
+  "dependencies": {
+    "qrcode.react": "^4.2.0",
+    "react-is": "^19.2.4",
+    "recharts": "^3.7.0",
+    "zustand": "^5.0.11"
+  }
+}
