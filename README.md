@@ -1,59 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# BEGE-POS: Cafe & Resto Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📌 Project Overview
+**BEGE-POS** is a comprehensive, modular, and scalable management system designed specifically for the Cafe & Restaurant industry. It integrates Point of Sale (POS) functionality with deep operational management, including inventory engines, HR/Payroll, financial reporting, and real-time customer interventions.
 
-## About Laravel
+This project is built to handle everything from a single local cafe (like **Garasi 66 Coffee & Roastery**) to multi-branch enterprises and cloud kitchens.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Core Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1. Point of Sale (POS) Core
+- **Menu Management**: Categories, modifiers, and add-ons.
+- **Table Management**: Real-time table availability and smart allocation.
+- **Order Lifecycle**: From Draft to Served/Completed.
+- **Flexible Ordering**: Support for Walk-in, Takeaway, and Online Orders.
 
-## Learning Laravel
+### 2. Advanced Inventory Engine
+- **Recipe & BOM**: Automatic raw material deduction upon sale.
+- **Stock Opname**: Integrated inventory auditing.
+- **Supplier Management**: Purchase order tracking and movement logs.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 3. HR & Payroll
+- **Employee Management**: Role-based access control (RBAC) via Spatie.
+- **Attendance**: Shift tracking, late detection, and overtime management.
+- **Payroll**: Automatic salary calculation including benefits and deductions.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 4. Financial Management
+- **Transactions**: Integration with QRIS, EDC, and Payment Gateways.
+- **Financial Accounting**: Auto-journaling for income, expenses, and payroll.
+- **Reporting**: Advanced analytics for sales, top menus, and P&L.
 
-## Laravel Sponsors
+### 5. Reservation System
+- **Engine**: State-machine driven reservation flow.
+- **Notification**: Real-time alerts for customers and staff via FCM/Pusher.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠️ Technology Stack
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Backend (Web & API)
+- **Framework**: Laravel 12
+- **Database**: MySQL
+- **Real-time**: Laravel Reverb / Pusher
+- **Queue**: Redis
+- **Styling**: Tailwind CSS / Livewire
+- **Security**: Sanctum (Token-based Auth), Spatie Permission
 
-## Contributing
+### Mobile App (Customer & Staff)
+- **Framework**: Expo / React Native
+- **State Management**: NativeWind (Tailwind for mobile)
+- **API**: Axios with Sanctum integration
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🧱 Architecture
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```mermaid
+graph TD
+    A[Customer Mobile/QR] -->|Order| B[Order Service]
+    C[Cashier Panel] -->|Manage| B
+    B --> D[POS Core]
+    D --> E[Inventory Deduction]
+    D --> F[Finance/Income]
+    G[Kitchen Display] <--|Real-time| D
+    H[Management Dashboard] -->|Monitoring| D
+```
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📦 Getting Started
 
-## License
+### Prerequisites
+- PHP 8.2+
+- Node.js & NPM
+- MySQL
+- Redis
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Backend Installation
+1. Clone the repository
+2. Go to `01` directory
+3. Run `composer install`
+4. Copy `.env.example` to `.env` and configure database
+5. Run `php artisan migrate --seed`
+6. Run `php artisan serve`
+
+### Mobile App Installation
+1. Go to `02` directory
+2. Run `npm install`
+3. Configure your API base URL in `src/api/client.ts`
+4. Run `npx expo start`
+
+---
+
+## 🔐 Security & Standards
+- **CSRF & XSS Protection**: Built-in Laravel security layers.
+- **Clean Code**: SOLID principles and Service Layer pattern implementation.
+- **Responsive**: Mobile-first design for all interfaces.
+
+---
+
+## 📄 License
+Maintainer: **Garasi 66 Coffee & Roastery** / Build by **BEGE DEVS**
