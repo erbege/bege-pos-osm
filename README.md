@@ -62,7 +62,7 @@ graph TD
     B --> D[POS Core]
     D --> E[Inventory Deduction]
     D --> F[Finance/Income]
-    G[Kitchen Display] <--|Real-time| D
+    D <-->|Real-time| G[Kitchen Display]
     H[Management Dashboard] -->|Monitoring| D
 ```
 
