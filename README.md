@@ -184,4 +184,8 @@ The entrypoint script will automatically wait for the database, run migrations, 
 This project is proprietary and confidential. All rights reserved.
 
 ## 📄 License
+<<<<<<< HEAD
 Maintainer: **Garasi 66 Cafe & Resto** / Build by **BEGE DEVS**
+=======
+Maintainer: **Garasi 66 Coffee & Roastery** / Build by **BEGE DEVS**
+>>>>>>> 76a0771844a799ce7ee95a7f87b35e339f82a566
